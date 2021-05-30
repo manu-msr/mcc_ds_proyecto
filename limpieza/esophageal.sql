@@ -36,7 +36,7 @@ CREATE VIEW esophageal_clean AS
 (SELECT row_number() over() id_esophageal, region, age, sex - 1 sex, alcohol - 1 alcohol, tobacco - 1 tobacco, 
 family_history - 1 family_history, diff_swallowing - 1 diff_swallowing, pain_swallowing - 1 pain_swallowing, 
 weight_loss - 1 weight_loss, vomiting - 1 vomiting, heart_burn - 1 heart_burn, cough - 1 cough, 
-chest_pain - 1 chest_pain, ba_swallow - 1 ba_swallow, endoscopy - 1 endoscopy, ct_scan - 1, biopsy - 1 biopsy,
+chest_pain - 1 chest_pain, ba_swallow - 1 ba_swallow, endoscopy - 1 endoscopy, ct_scan - 1 ct_scan, biopsy - 1 biopsy,
 cxr - 1 cxr, us - 1 us, hist_grade, dist_metas, adj_organ,
 (CASE WHEN tnm_stage = ' ' THEN 0 ELSE tnm_stage :: INT END) tnm_stage, surgery, t_hital_eso -1 t_hital_eso, 
 t_thoracic_eso - 1 t_thoracic_eso, chemotherapy, radiotherapy, hospital_stay, status_patient - 1 status_patient,
