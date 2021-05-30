@@ -30,7 +30,7 @@ no).
   predicción, clasificación, entre otras posibles.
 
 - Con base en el campo que nos permite determinar si el paciente sobrevivió o no, determinar la correlación de variables
-  que nos permita realizar un modelo de predicción quizá por medio de *regresión*.
+  que nos permita realizar un modelo de predicción quizá por medio de *análisis de regresión*.
 
 - Con base en el campo de tratamiento y el campo que determina si el paciente sobrevivió, realizar un modelo de 
   clasificación que ayude a determinar el mejor tratamiento para nuevos pacientes. (:warning: Quizá sea más conveniente
@@ -57,11 +57,11 @@ No se ocuparon todos los datos pues no eran relevantes para el proyecto. Con el 
 
 Notar el cambio en los tipos de datos. El proceso de cambio y la construcción de la vista se puede consultar en el siguiente [*script*](limpieza/esophageal.sql) y puede replicarse para los otros dos conjuntos de datos, cuidando que las columnas sean del tipo adecuado y evitando los valores nulos.
 
-### :o: Análisis Exploratorio de Datos
+### :ballot_box_with_check: Análisis Exploratorio de Datos
 
-Se dividió el Análisis Exploratorio de Datos en tres partes (1) Análisis de algunos campos y de interés por medio de SQL mediante sus cláusulas (`GROUP BY`, `CUBE`, `ROLLUP`, funciones de ventana); (2) Análisis mediante medidas de tendencia central para cada uno de los campos y medidas de variabilidad; (3) Análisis visual mediante histogramas y gráficas de barras para determinar la forma de los datos.
+Se dividió el Análisis Exploratorio de Datos en tres partes (1) Análisis de algunos campos y de interés por medio de SQL mediante sus cláusulas (`GROUP BY`, `CUBE`, `ROLLUP`, funciones de ventana); (2) Análisis mediante medidas de tendencia central para algunos de los campos y medidas de variabilidad; (3) Análisis visual.
 
-<details><summary><strong>1. Análisis por medio de SQL (<em><a href="analisis_exploratorio/eda.sql">script</a>)</em></strong> </summary>
+<details><summary><strong>Análisis por medio de SQL (<em><a href="analisis_exploratorio/eda.sql">script</a>)</em></strong> </summary>
 	<p>
 
 - Conteo de registros.
@@ -394,6 +394,135 @@ Se dividió el Análisis Exploratorio de Datos en tres partes (1) Análisis de a
 
 </p>
 </details>
+
+<details><summary><strong>Análisis de tendencia central y visual por medio de Pandas (<em><a href="notebooks/eda.ipynb">notebook</a>)</em></strong> </summary>
+	<p>
+
+**Variables numéricas (edad)**
+
+- Medidas de tendencia central y variabilidad
+
+	```
+	count    349.000000
+	mean      51.438395
+	std       11.917572
+	min       18.000000
+	25%       44.000000
+	50%       50.000000
+	75%       60.000000
+	max       95.000000
+   ```
+
+   - La edad promedio es 51.4
+   - La edad mínima es 18
+   - La edad máxima es 95
+   - Rango: 77
+   - El 25% de los datos tienen un valor menor a 44
+   - El 50% de los datos tienen un valor menor a 50 (mediana)
+   - El 75% de los datos tienen un valor menor a 95
+   - Rango intercuartilico: 51
+   - La desviación estándar es 11.91 (hip: están ligeramente dispersos)
+
+- Diagrama de caja e Histograma
+
+	El siguiente diagrama confirma los resultados anteriores. Los bigotes nos indican que los valores de 18 y 95 son *raros* por lo que se consideran atípicos.
+
+	![imagen](imagenes/boxplot.png)
+
+	Dato que también podemos comprobar con un histograma. Los valores más elevados corresponden con el promedio y los más pequeños con los valores atípicos que muestra el diagrama de caja.
+
+	![imagen](imagenes/histograma.png)
+
+**Variables categóricas**
+
+- Moda de algunas de las variables
+
+  ```
+  region   sex  alcohol  tobacco  khat  pain_swallowing  weight_loss
+  OROMIA   0.0      1.0      1.0   1.0              1.0          1.0
+  ```
+  ```   
+
+   cough  status_patient  
+     1.0             1.0  
+
+  ```
+
+  Interpretación:
+
+  - La mayoría de casos se encuentran en OROMIA.
+  - La mayoría de casos son del genero '0'.
+  - La mayoría de casos toman alcohol.
+  - La mayoría de casos fuman tabaco.
+  - La mayoría de casos fuman khat.
+  - La mayoría de casos tienen dolor al tragar.
+  - La mayoría de casos perdieron peso.
+
+- Tabla de contingencia (causas)
+
+   ```
+   khat            0            1             total
+   alcohol         0     1      0      1           
+   tobacco         0  1  0   1  0   1  0    1      
+   status_patient                                  
+   0               0  0  0  10  1   4  0   24    39
+   1               6  6  4  66  8  37  3  180   310
+   total           6  6  4  76  9  41  3  204   349
+   ```
+
+   ![imagen](imagenes/causas.png)
+
+   Algunas interpretaciones:
+
+   - 204 personas tomaban alcohol y fumaban tanto tabaco como khat de las cuales sobrevivieron 24 y fallecieron 180.
+   - 76 personas tomaban alcohol y fumaban tabaco pero no khat de las cuales sobrevivieron 10 y fallecieron 66.
+   - 6 personas no tomaban alcohol y no fumaban ni tabaco ni khat de las cuales fallecieron todas.
+
+- Tabla de contingencia (síntomas)
+
+   ```
+   pain_swallowing  0          1              total
+   cough            0   1      0       1           
+   weight_loss      0   0  1   0  1    0    1      
+   status_patient                                  
+   0                1   2  1   1  0    9   25    39
+   1                1   8  6  11  6  109  169   310
+   total            2  10  7  12  6  118  194   349
+   ```
+
+   ![imagen](imagenes/sintomas.png)
+
+   Algunas interpretaciones:
+
+   - 118 personas tuvieron dolor al tragar y tos pero no perdieron peso, de las cuales sobrevivieron 9 y fallecieron 109.
+   - 194 personas tuvieron dolor al tragar, todos y perdida de peso, de las cuales sobrevivieron 25 y fallecieron 169.
+   - 12 personas tuvieron dolor al tragar, no tuvieron tos ni perdida de peso, de las cuales sobrevivió 1 y fallecieron 11,
+
+- Tabla de contingencia (tratamiento)
+
+   ```
+   chemotherapy      0              1           total
+   radiotherapy      0       1      0      1         
+   surgery           0    1  0  1   0   1  0  1      
+   status_patient                                    
+   0                 2   17  1  1  10   4  2  2    39
+   1               109  120  6  4  46  15  7  3   310
+   total           111  137  7  5  56  19  9  5   349
+   ```
+
+   ![imagen](imagenes/tratamiento.png)
+
+
+   Algunas interpretaciones:
+
+   - 56 personas fueron tratadas con quimiterapia sin radioterapia ni cirugía de las cuales 10 sobrevivieron y 46 murieron.
+   - 137 personas fueron operadas, no tuvieron quimiterapia ni radioterapia, de las cuales 17 sobrevivieron y 120 murieron.
+   - 111 personas no recibieron ningún tratamiento, de las cuales 2 sobrevivieron y 109 murieron.
+
+</p>
+</details>
+
+Al finalizar esta etapa, se pudo apreciar que el conjunto de datos podría no ser útil para detectar patrones de supervivencia pero sí de fallecimiento.
 
 
 ### :o: Predicción
