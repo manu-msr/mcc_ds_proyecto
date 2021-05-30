@@ -31,12 +31,7 @@ no).
 - Conectar la base de datos con __Python__ sobre su herramienta __Jupyter Notebooks__ para realizar labores de 
   predicción, clasificación, entre otras posibles.
 
-- Con base en el campo que nos permite determinar si el paciente sobrevivió o no, determinar la correlación de variables
-  que nos permita realizar un modelo de predicción quizá por medio de *análisis de regresión*.
-
-- Con base en el campo de tratamiento y el campo que determina si el paciente sobrevivió, realizar un modelo de 
-  clasificación que ayude a determinar el mejor tratamiento para nuevos pacientes. (:warning: Quizá sea más conveniente
-  tratarlo como problema de decisión o de recomendación).
+- Con base en el campo que nos permite determinar si el paciente sobrevivió o no, evaluar distintos tipos de modelos de regresión y clasificación con el fin de encontrar el mejor posible para predecir este dato con nuevos pacientes.
 
 - Por supuesto, realizar actividades de preprocesamiento de los datos con el fin de tener un conjunto de datos limpio
   y bien estructurado que facilite las tareas de predicción y/o clasificación.
@@ -694,12 +689,32 @@ Notamos como de todos nuestros modelos fue el peor evaluado.
 
 ---
 
-### :o: Conclusiones
+### :ballot_box_with_check: Conclusiones
 
-*Sección en proceso*
+Con base en los distintos trabajos de análisis y definición de modelos se dan las siguientes conclusiones:
+
+- Los conjuntos de datos originales no son iguales entre sí, por lo que se deben analizar por separado al tener columnas distintas. Motivo por el cuál sólo se hizo el análisis sobre casos de Cáncer de Esófago.
+
+- La edad promedio de personas con cáncer de esófago ronda los 50 años (para esta muestra).
+
+- Hay algunos casos *raros* con pacientes de 18 y 95 años.
+
+- En su mayoría los casos se encontraron en OROMIA, las posibles causas se deben a que los pacientes toman alcohol y fuman. En su mayoría tuvieron síntomas como tos, dolor al tragar y pérdida de peso.
+
+- No es posible hacer una regresión lineal dado que la mayoría de datos son categóricos.
+
+- Los mejores modelos de predicción fueron la regresión logística y los árboles de decisión con diferencias mínimas.
+
+- No se sugiere usar el conjunto de datos para detectar si el paciente vivirá, esto se puede apreciar con el cálculo de la especificidad en todos los modelos que se definieron. En todos los casos fue bajo, lo cual nos indica que los datos fueron incorrectamente clasificados como negativos en su mayoría.
 
 ---
 
-### :o: Trabajo a futuro
+### :ballot_box_with_check: Trabajo a futuro
 
-*Sección en proceso*
+- Limpiar e integrar todos los conjuntos de datos.
+
+- Recabar información sobre las categorías incluidas en los conjuntos de datos pues algunos datos son desconocidos tales como el género (¿qué significa 0 y qué 1?).
+
+- Replicar el proceso para los datos de cáncer colorectal y de próstata. Es probable que con estos conjuntos de datos sí sea posible determinar si el paciente vivirá. 
+
+- Recabar nuevos datos para detectar otros tipos de cancer, integrando en este caso algunos datos cuantitativos además de la edad.
