@@ -20,10 +20,9 @@ características de imagen e histológicas así como el estudio [TNM](https://en
 cáncer. Así mismo incluye opciones de tratamiento que recibió el paciente así como el estado del mismo (si falleció o
 no).
 
-#### :ballot_box_with_check: Objetivos y Tareas
+#### :dart: Objetivos y Tareas
 
-- Cargar los datos en un modelo de base de datos relacional lo cuál requerirá además de la adición de catálogos para
-  poder asociar algunos valores específicos que se incluyen en el *dataset*.
+- Cargar los datos en un modelo de base de datos relacional.
 
 - Realizar un análisis exploratorio de dato con el fin de obtener estadísticas sobre los datos obtenidos.
 
@@ -40,12 +39,23 @@ no).
 - Por supuesto, realizar actividades de preprocesamiento de los datos con el fin de tener un conjunto de datos limpio
   y bien estructurado que facilite las tareas de predicción y/o clasificación.
 
-### :o: Carga y preprocesamiento de datos
+### :ballot_box_with_check: Carga y preprocesamiento de datos
 
 Se obtó por usar el Gestor de Bases de Datos __PostgreSQL__ pues sus cláusulas `CUBE` y `ROLLUP` nos permiten realizar
-un análisis exploratorio más detallado.
+un análisis exploratorio más detallado. Se contó inicialmente con los siguientes conjuntos de datos:
 
-*Sección en proceso*
+- [colorectal.csv](datasets/colorectal.csv)
+- [esophageal.csv](datasets/esophageal.csv)
+- [prostate.csv](datasets/postate.csv)
+
+Previo a la carga de datos, se analizó la estructura de cada archivo para determinar si era necesario crear nuevas 
+tablas. Derivado de este análisis se notó que no había una equivalencia directa entre estas tablas, por lo que se optó analizar cada conjunto de datos individualmente, sin embargo, **para los fines de este proyecto únicamente se analizaron los datos de cáncer de esófago**.
+
+No se ocuparon todos los datos pues no eran relevantes para el proyecto. Con el fin de no perder los datos originales, se creó una vista (`esophageal_clean`). Las diferencias entre la tabla original y la vista se muestran en el siguiente diagrama:
+
+<center><img src="imagenes/base.png" width="25%" height="25%"></center>
+
+Notar el cambio en los tipos de datos. El proceso de cambio y la construcción de la vista se puede consultar en el siguiente [*script*](limpieza/esophageal.sql) y puede replicarse para los otros dos conjuntos de datos, cuidando que las columnas sean del tipo adecuado y evitando los valores nulos.
 
 ### :o: Análisis Exploratorio de Datos
 
