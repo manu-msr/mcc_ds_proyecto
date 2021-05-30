@@ -7,6 +7,8 @@
 
 ![imagen](imagenes/dataset-card.jpg)
 
+---
+
 ### :capital_abcd: Introducción
 Este proyecto está basado en el reto *Survival Patterns of Cancers* disponible en la plataforma [Kaggle](https://www.kaggle.com/saurabhshahane/survival-patterns-of-cancers).
 Este proyecto incluye tres conjuntos de datos:
@@ -39,6 +41,8 @@ no).
 - Por supuesto, realizar actividades de preprocesamiento de los datos con el fin de tener un conjunto de datos limpio
   y bien estructurado que facilite las tareas de predicción y/o clasificación.
 
+---
+
 ### :ballot_box_with_check: Carga y preprocesamiento de datos
 
 Se obtó por usar el Gestor de Bases de Datos __PostgreSQL__ pues sus cláusulas `CUBE` y `ROLLUP` nos permiten realizar
@@ -56,6 +60,8 @@ No se ocuparon todos los datos pues no eran relevantes para el proyecto. Con el 
 <center><img src="imagenes/base.png" width="25%" height="25%"></center>
 
 Notar el cambio en los tipos de datos. El proceso de cambio y la construcción de la vista se puede consultar en el siguiente [*script*](limpieza/esophageal.sql) y puede replicarse para los otros dos conjuntos de datos, cuidando que las columnas sean del tipo adecuado y evitando los valores nulos.
+
+---
 
 ### :ballot_box_with_check: Análisis Exploratorio de Datos
 
@@ -524,22 +530,175 @@ Se dividió el Análisis Exploratorio de Datos en tres partes (1) Análisis de a
 
 Al finalizar esta etapa, se pudo apreciar que el conjunto de datos podría no ser útil para detectar patrones de supervivencia pero sí de fallecimiento.
 
+---
 
-### :o: Predicción
+### :ballot_box_with_check: Clasificación
 
-*Sección en proceso*
+A continuación se muestran algunas técnicas de predicción basadas en clasificación.
 
-### :o: Clasificación
+Para realizar el entrenamiento con todos los modelos se siguieron los siguientes pasos:
 
-*Sección en proceso*
+1. Como datos de entrada se eligieron todos los campos menos la llave primaria, la región y por supuesto la columna que nos indica el estado del paciente.
 
-### :o: Resultados
+1. Como dato de salida se eligió únicamente el estado del paciente.
 
-*Sección en proceso*
+1. Separar el conjunto de datos en entrenamiento y prueba (70%/30%).
+
+1. Realizar el entrenamiento.
+
+Para analizar los resultados se usó una matriz de confusión.
+
+![imagen](imagenes/matriz_interp.png)
+
+Una interpretación de los resultados de esta matriz, se puede dar mediante las siguientes fórmulas:
+
+1. Precisión: De todas las clasificaciones positivas que hicimos, ¿cuántas de ésas eran en realidad positivas?
+   
+   *precision = VP / (VP + FP)*
+
+1. Exactitud: Del total de clasificaciones que hicimos, ¿cuántas fueron clasificadas correctamente?
+   
+   *exactitud = (VP + VN) / (VP + FN + FP + VN)*
+
+1. Sensibilidad: De todas las clasificaciones positivas que había en realidad, ¿cuántas fueron clasificadas correctamente como positivas?
+   
+   *sensibilidad = VP / (VP + FN)*
+
+1. Especificidad: De todas las clasificaciones negativas que había en realidad, ¿cuántas fueron clasificadas correctamente como negativas?
+   
+   *especificidad = VN / (VN + FP)*
+
+<br/>
+
+<u>**Regresión Lineal**</u>
+
+Se inició este proyecto con la idea de encontrar alguna correlación entre las distintas variables. Sin embargo al sólo contar con una variable cuantitativa, de descartó el uso de una regresión lineal. Esto se puede corroborar con la siguiente gráfica de pares.
+
+<details><summary><strong>Gráfica de pares (<em><a href="notebooks/regresion.ipynb">notebook</a>)</em></strong> </summary>
+	<p>
+
+![imagen](imagenes/regresion.png)
+
+</p>
+</details>
+<br/>
+
+<u>**Clasificación Supervisada**</u>
+
+Podemos usar los datos para *predecir* si un paciente puede o no sobrevivir usando un método de Clasificación Binaria Supervisada dado que sólo tenemos dos posibles valores. Se optó por emplear tres técnicas de clasificación.
+
+<details><summary><strong>Regresión logística (<em><a href="notebooks/logistica.ipynb">notebook</a>)</em></strong> </summary>
+	<p>
+
+Podemos usar regresión logística en este caso la cuál modela el problema por medio del *sigmoidal* que permite dejar los valores en cero de un lado y los de uno en el otro:
+
+<img src="imagenes/sigmoidal.png" width="300" height="300">
+
+Para el modelo generado se obtuvo la siguiente matriz:
+
+![imagen](imagenes/matriz_confusion.png)
+
+Interpretación:
+
+```
+Precision: 0.941747572815534
+Exactitud: 0.9428571428571428
+Sensibilidad: 1.0
+Especificidad: 0.25
+```
+
+Lo cual nos dice que la precisión, exactitud y sensibilidad es bastante buena. Sin embargo la especificad es muy baja lo cual indica que hubo muchos datos que fueron incorrectamente clasificados como negativos. Dicho de otra forma, el modelo fue bueno para clasificar fallecimientos pero no tanto para sobrevivientes. Esto se debe quizá a que tenemos más datos de fallecimientos.
+
+</p>
+</details>
+
+<details><summary><strong>Árboles de Decisión (<em><a href="notebooks/random_forest.ipynb">notebook</a>)</em></strong> </summary>
+<p>
+
+La idea detrás de un árbol de decisión consiste en ir tomando decisiones de forma encadenada e ir descartando soluciones hasta quedarnos con una sola salida, en este caso el valor de la variable `status_patient`. De esta forma el método llamado *random forest*, consiste en tomar varios árboles (bosque) con las siguientes características:
+
+1. Cada árbol de decisión debe ser independiente.
+1. Cada árbol debe ser entrenado aleatoriamente,
+1. La información que reciben los árboles debe ser distinta para que se basen en distintas características.
+
+Una vez que todos los árboles se han entrenado, se hace un *consenso* para decidir el resultado de una predicción. Cada uno de los árboles *vota* y la clase más votada es la que define a qué clase pertenece el dato.
+
+En este caso se hizo el mismo proceso que con la regresión logística: se separo el conjunto en entrenamiento y prueba, se entrenó y se midió el desempeño usando una matriz de confusión y las fórmulas para interpretar los resultados.
+
+![imagen](imagenes/matriz_rf.png)
+
+```
+Precision: 0.9320388349514563
+Exactitud: 0.9238095238095239
+Sensibilidad: 0.9896907216494846
+Especificidad: 0.125
+```
+
+Donde vemos que nuevamente la especificidad es bastante baja.
+
+Cada uno de los árboles tiene una forma similar a la siguiente. Se muestra en el ejemplo el árbol 18 del bosque.
+
+![imagen](imagenes/arbol.png)
+
+</p>
+</details>
+
+<details><summary><strong>Naïve Bayes (<em><a href="notebooks/naive_bayes.ipynb">notebook</a>)</em></strong> </summary>
+<p>	
+
+Este clasificador se basa en la noción de las características de un objeto que contribuyen a su categorización. Se muestran de la misma manera su matriz de confusión y métricas.
+
+![imagen](imagenes/bayes.png)
+
+Interpretación:
+
+```
+Precision: 0.8333333333333334
+Exactitud: 0.2571428571428571
+Sensibilidad: 0.16666666666666666
+Especificidad: 0.8
+```
+
+En este caso aunque mejoró considerablemente la especificidad, la exactitud y sensibilidad bajaron demasiado.
+
+</p>
+</details>
+<br/>
+
+<u>**Clasificación No Supervisada**</u>
+
+Podemos usar la clasificación No Supervisada como una alternativa que permita clasificar los casos correctamente mediante clusterización, de forma tal que si el modelo genera correctamente las clases, podemos usar el modelo como predictor. En esta caso usamos los datos originales para comparar con la salida de nuestro modelo. Para este caso se obtó por usar *K-Means*.
+
+<details><summary><strong>K-Means (<em><a href="notebooks/kmeans.ipynb">notebook</a>)</em></strong> </summary>
+<p>	
+
+Este algoritmo muy útil cuando tenemos un dataset que queremos dividir por grupos pero no sabemos exactamente qué grupos queremos y cuáles son sus características. Lo único que tenemos que decidir de antemano es cuántos grupos queremos, y el algoritmo intentará agrupar nuestros datos en esa cantidad de grupos.
+
+Se obtuvo la siguiente matriz:
+
+![imagen](imagenes/kmeans.png)
+
+Interpretación:
+
+```
+Precision: 0.89937106918239
+Exactitud: 0.47564469914040114
+Sensibilidad: 0.4612903225806452
+Especificidad: 0.5897435897435898
+```
+
+Notamos como de todos nuestros modelos fue el peor evaluado.
+
+</p>
+</details>
+
+---
 
 ### :o: Conclusiones
 
 *Sección en proceso*
+
+---
 
 ### :o: Trabajo a futuro
 
