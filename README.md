@@ -3,8 +3,6 @@
 **Maestría en Ciencia e Ingeniería de la Computación, UNAM**   
 *Manuel Soto Romero*   
 
-:warning: *Borrador. Trabajo en proceso.*
-
 ![imagen](imagenes/dataset-card.jpg)
 
 ---
@@ -562,6 +560,11 @@ Una interpretación de los resultados de esta matriz, se puede dar mediante las 
 1. Especificidad: De todas las clasificaciones negativas que había en realidad, ¿cuántas fueron clasificadas correctamente como negativas?
    
    *especificidad = VN / (VN + FP)*
+
+
+Adicionalmente se aplicó PCA para reducir el número de columnas. Con este paso se pretende comparar si todos los modelos definidos tienen alguna mejora. En este caso, ninguno de los modelos presentó una mejora considerable por lo que no se muestan en este documento, sin embargo pueden observarse en el *notebook* de cada modelo. Los resultados de PCA se guardaron en un archivo CSV ([_**notebook**_](notebooks/pca.ipynb)).
+
+El número de componentes se elegió estableciente la varianza de las componentes. En este caso se usó una varianza del 95%. Como referencia se consultó [esta referencia](https://www.mikulskibartosz.name/pca-how-to-choose-the-number-of-components/).
 
 <br/>
 

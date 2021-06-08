@@ -1,0 +1,1655 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass beamer
+\begin_preamble
+\definecolor{Guinda}{rgb}{0.49, 0.05, 0.12}
+\definecolor{Rojo}{rgb}{0.8, 0, 0}
+\definecolor{Verde}{rgb}{0,0.4,0}
+\definecolor{blue(ncs)}{rgb}{0.0, 0.53, 0.74}
+\definecolor{bluegray}{rgb}{0.4, 0.6, 0.8}
+\definecolor{celestialblue}{rgb}{0.29, 0.59, 0.82}
+\definecolor{dollarbill}{rgb}{0.52, 0.73, 0.4}
+\definecolor{indiagreen}{rgb}{0.07, 0.53, 0.03}
+\definecolor{brown(web)}{rgb}{0.65, 0.16, 0.16}
+\definecolor{burgundy}{rgb}{0.5, 0.0, 0.13}
+\definecolor{carmine}{rgb}{0.59, 0.0, 0.09}
+\definecolor{deepcarminepink}{rgb}{0.94, 0.19, 0.22}
+\definecolor{fireenginered}{rgb}{0.81, 0.09, 0.13}
+\usecolortheme[named=fireenginered]{structure}
+\usetheme{Boadilla}
+\usefonttheme{structurebold}
+\usepackage{babel}
+\usepackage{proof}
+\usepackage{multicol}
+\usepackage{enumitem}
+\usepackage{proof}
+\usepackage{mathrsfs}
+\usepackage{amsfonts}
+\usepackage{forest}
+\usepackage{ebproof}
+\usepackage{amssymb}
+\addto\shorthandsspanish{\spanishdeactivate{~<>}}
+\setbeamertemplate{itemize items}[default]
+\setbeamertemplate{enumerate items}[default]
+\end_preamble
+\use_default_options false
+\maintain_unincluded_children false
+\language spanish-mexico
+\language_package default
+\inputencoding iso8859-15
+\fontencoding T1
+\font_roman "palatino" "default"
+\font_sans "tgheros" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family sfdefault
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize 11
+\spacing single
+\use_hyperref false
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 0
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\boxbgcolor #dddddd
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style swedish
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+CD - 2021-2
+\end_layout
+
+\end_inset
+
+
+\color black
+Seminario de Herramientas para Ciencia de Datos
+\end_layout
+
+\begin_layout Subtitle
+
+\emph on
+Proyecto: Patrones de Supervivencia para Distintos tipos de Cáncer
+\end_layout
+
+\begin_layout Author
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+
+\lang spanish
+Manuel S.R.
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+Manuel Soto Romero
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Institute
+\begin_inset Argument 1
+status collapsed
+
+\begin_layout Plain Layout
+MCC-UNAM
+\end_layout
+
+\end_inset
+
+Maestría en Ciencia e Ingeniería de la Computación, UNAM
+\end_layout
+
+\begin_layout Date
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+today
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 3
+status open
+
+\begin_layout Plain Layout
+t, fragile
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Introducción
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+El proyecto está basado en el reto 
+\emph on
+Survival Patterns of Cancers 
+\emph default
+disponible en Kaggle.
+\end_layout
+
+\begin_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Incluye tres conjuntos de datos:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Cáncer de esófago
+\end_layout
+
+\begin_layout Itemize
+Cáncer colorectal
+\end_layout
+
+\begin_layout Itemize
+Cáncer de próstata
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Incluyen información como:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Socio-demográfica
+\end_layout
+
+\begin_layout Itemize
+Característica de los pacientes
+\end_layout
+
+\begin_layout Itemize
+Signos
+\end_layout
+
+\begin_layout Itemize
+Síntomas
+\end_layout
+
+\begin_layout Itemize
+Tratamiento
+\end_layout
+
+\begin_layout Itemize
+Si sobrevivió o falleció.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\align center
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+No quitar este comentario
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 3
+status open
+
+\begin_layout Plain Layout
+t, fragile
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Objetivos y tareas
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+
+\size footnotesize
+Cargar los datos en un modelo de base de datos relacional.
+\end_layout
+
+\begin_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size footnotesize
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\size footnotesize
+Realizar un análisis exploratorio de dato con el fin de obtener estadísticas
+ sobre los datos obtenidos.
+\end_layout
+
+\begin_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size footnotesize
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\size footnotesize
+Conectar la base de datos con 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textsc{Python}
+\end_layout
+
+\end_inset
+
+ sobre su herramienta 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textsc{Jupyter Notebooks}
+\end_layout
+
+\end_inset
+
+ para realizar labores de predicción, clasificación, entre otras posibles.
+\end_layout
+
+\begin_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size footnotesize
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\size footnotesize
+Con base en el campo que nos permite determinar si el paciente sobrevivió
+ o no, evaluar distintos tipos de modelos de regresión y clasificación con
+ el fin de encontrar el mejor posible para predecir este dato con nuevos
+ pacientes.
+\end_layout
+
+\begin_deeper
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size footnotesize
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\size footnotesize
+Por supuesto, realizar actividades de preprocesamiento de los datos con
+ el fin de tener un conjunto de datos limpio y bien estructurado que facilite
+ las tareas de predicción y/o clasificación.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+No quitar este comentario
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 3
+status open
+
+\begin_layout Plain Layout
+t, fragile
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Carga y preprocesamiento de datos
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Standard
+Los conjuntos de datos fueron cargados en 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textsc{PostgreSQL}
+\end_layout
+
+\end_inset
+
+ mediante el cliente 
+\emph on
+universal
+\emph default
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textsc{DBeaver}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename imagenes/postgres.png
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Problema 1: 
+\series default
+Los conjuntos de datos no tenían los mismos campos.
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+Solución: 
+\series default
+Se optó por acotar el problema a Cáncer de Esófago.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+No quitar este comentario
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 3
+status open
+
+\begin_layout Plain Layout
+t, fragile
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Carga y preprocesamiento de datos
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+lstparams "language=SQL,basicstyle={\normalsize},showstringspaces=false,tabsize=3"
+inline false
+status open
+
+\begin_layout Plain Layout
+
+CREATE VIEW esophageal_clean AS (SELECT ...);
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename /home/manu/Documentos/maestria/20212/data/mcc_ds_proyecto/imagenes/base.png
+	scale 10
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+No quitar este comentario
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 3
+status open
+
+\begin_layout Plain Layout
+t, fragile
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Carga y preprocesamiento de datos
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Problema 2: 
+\series default
+Muchos datos estaban almacenados como 1 y 2 en lugar de 0 o 1.
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+Solución: 
+\series default
+Restar 1 a varias columnas.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Problema 3: 
+\series default
+Muchos catálogos no tenían el significado.
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+Solución: 
+\series default
+Investigación.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Problema 4: 
+\series default
+Campos irrelevantes (eg.
+ si el paciente era casado o no)
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+Solución: 
+\series default
+Eliminar dichos campos.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\series bold
+Problema 5: 
+\series default
+Campos enteros guardados como cadena
+\begin_inset Newline newline
+\end_inset
+
+
+\series bold
+Solución: 
+\series default
+Cambiar tipo de dato.
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\emph on
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+fbox{Ver: esophageal.sql}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+No quitar este comentario
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 3
+status open
+
+\begin_layout Plain Layout
+t, fragile
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Análisis Exploratorio de Datos (SQL)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Se realizó el análisis usando las siguientes cláusulas:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{GROUP BY}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{CUBE}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{ROLLUP}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{PARTITION OVER}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+
+\emph on
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+fbox{Ver: eda.sql}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+No quitar este comentario
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 3
+status open
+
+\begin_layout Plain Layout
+t, fragile
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Recolección de basura
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameSubtitle
+Orígenes
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+C, estableció una manera de solicitar y liberar memoria que fue ampliamente
+ aceptada por la comunidad de lenguajes.
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Hacía uso de dos funciones llamadas 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{malloc}
+\end_layout
+
+\end_inset
+
+ y 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+texttt{free}
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+textsc{Lisp}
+\end_layout
+
+\end_inset
+
+ implementó poco después un programa escrito por Daniel Edwards y que funcionarí
+a como el primer programa encargado de manejar la memoria de los programas
+ de manera automática.
+ 
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Este programa fue reconocido posteriormente como el primer programa de recolecci
+ón de basura.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+No quitar este comentario
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 3
+status open
+
+\begin_layout Plain Layout
+t, fragile
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Recolección de basura
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Block
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Definición
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+
+\emph on
+(Recolección de basura) La recolección de basura es el proceso automático
+ de la reclamación de memoria (o espacio) en una computadora.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+No quitar este comentario
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 3
+status open
+
+\begin_layout Plain Layout
+t, fragile
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Recolección de basura
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameSubtitle
+Ventajas
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+Minimización de 
+\emph on
+fugas
+\emph default
+ de memoria.
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Persistencia en los datos utilizados a través de la ejecución de un programa.
+ 
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Minimización de errores (principalmente con apuntadores de objetos).
+ 
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Optimizaciones de memoria usando heurísticas predictivas.
+ 
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+No quitar este comentario
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 3
+status open
+
+\begin_layout Plain Layout
+t, fragile
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Recolección de basura
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout FrameSubtitle
+¿En verdad es necesaria?
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Itemize
+
+\size small
+El llenado de la memoria puede ser independiente de la ejecución del programa.
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size small
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\size small
+El tiempo que usa el método de recolección de basura es en general proporcional
+ a la cantidad de espacio o memoria aún utilizado por el programa.
+ 
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size small
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\size small
+El recolector de basura debe acceder forzosamente a páginas que se encuentran
+ en almacenamiento secundario.
+\end_layout
+
+\begin_layout Pause
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size small
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\size small
+Es un proceso completamente disruptivo; el recolector de basura no puede
+ ser ejecutado mientras el programa se encuentre corriendo.
+ 
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset VSpace vfill
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Note Comment
+status collapsed
+
+\begin_layout Plain Layout
+No quitar este comentario
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 3
+status open
+
+\begin_layout Plain Layout
+t, fragile
+\end_layout
+
+\end_inset
+
+
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Referencias
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-1"
+
+\end_inset
+
+Hoare Charles, 
+\emph on
+Procedures and parameters: An Axiomatic approach, Symposium on Semantics
+ of Alrithmic Languages
+\emph default
+, Páginas 102- 116, 1971.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-7"
+
+\end_inset
+
+Crank Erik, Fellisen Matthias, 
+\emph on
+Parameter-passing and the lambda calculus
+\emph default
+, Proceedings of the 18th ACM SIGPLAN-SIGACT symposium on Principles of
+ programming languages, Páginas 233-244, 1991.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-8"
+
+\end_inset
+
+Fleury, Ann, 
+\emph on
+Parameter passing: the rules the students construct,
+\emph default
+ ACM SIGCSE Bulletin, Volumen 23, Páginas 283 - 286, 1991.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "key-6"
+
+\end_inset
+
+McCarthy, John: 
+\emph on
+Recursive Functions of Symbolic Expressions and Their Computation by Machine,
+ Part I
+\emph default
+.
+ Commun.
+ ACM, 3(4):184–195, Abril 1960, ISSN 0001-0782.
+ https://doi.org/ 10.1145/367177.367199.
+ 
+\end_layout
+
+\end_deeper
+\end_body
+\end_document
